@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'grocery_management'
+    'grocery_management',
+    'polls'
 ]
 
 MIDDLEWARE = [
