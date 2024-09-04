@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/DjangoHelloWorld
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      PGSERVICEFILE: /root/.pg_service.conf
+
+volumes:
+  pgdata:
